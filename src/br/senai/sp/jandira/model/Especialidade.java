@@ -5,10 +5,35 @@ public class Especialidade {
 	private String nome;
 	private String descricao;
 	private static int quantidade;
-	
-	public Especialidade() {
-		quantidade++;
+        private static int contador = 1;
+	private Integer codigoEspecialidade;
+        
+        // Construtores da classe
+	public Especialidade(String nome) {
+		this.nome = nome;
+		atualizarCodigoEspecialidade();
 	}
+        
+        
+        public Especialidade(String nome, String descricao) {
+		this.nome = nome;
+		this.descricao = descricao;
+		atualizarCodigoEspecialidade();
+	}
+	
+        public Especialidade() {
+		atualizarCodigoEspecialidade();
+	}
+        
+        private void atualizarCodigoEspecialidade() {
+		this.codigoEspecialidade = contador;
+		contador++;
+	}
+        
+       //
+        
+        
+       
 	
 	// Métodos de acesso getters and setters
 	public void setNome(String novoNome) {
