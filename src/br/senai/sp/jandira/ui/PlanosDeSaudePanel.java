@@ -5,6 +5,7 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
+import br.senai.sp.jandira.model.PlanoDeSaude;
 import br.senai.sp.jandira.model.TipoOperacao;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -93,7 +94,7 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
         PlanosDeSaudeDialog planosDeSaudeDialog = new PlanosDeSaudeDialog(
                 null, 
                 true ,
-                TipoOperacao.ALTERAR, 
+                TipoOperacao.ADICIONAR, 
                 null);
         planosDeSaudeDialog.setVisible(true);
         
@@ -126,37 +127,35 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
        
         linha = tablePlanosDeSaude.getSelectedRow();
         
-        if (linha != -1 ){
+        if (linha !=-1){
             editar();
         
-        }else {
-            JOptionPane.showConfirmDialog(
-                    this, 
-                    "selecione plano de saude", 
-                    "plano de saude", 
+        }else{
+            JOptionPane.showMessageDialog(this,
+                    "por favor selecione um plano de saude para alterar",
+                    "plano de saude",
                     JOptionPane.WARNING_MESSAGE);
         
         }
-    
-       
-      
-       
-    
-                    planosDeSaudeDialog.setVisible(true);
+        
     }//GEN-LAST:event_buttonAlterarPlanoDeSaudeActionPerformed
    
     private void editar() {
         
-       
-    
-    
-     PlanosDeSaudeDialog planosDeSaudeDialog = new PlanosDeSaudeDialog(
+        PlanoDeSaude planoDeSaude = PlanoDeSaudeDAO.getPlanoDeSaude(getCodigo());
+        
+        PlanosDeSaudeDialog planosDeSaudeDialog = 
+                new PlanosDeSaudeDialog(
                         null, 
-                        true , 
-                        TipoOperacao.ALTERAR,planoDeSaude);
-    
-           PlanosDeSaudeDialog planosDeSaudeDialog = new PlanosDeSaudeDialog.getPlanoDeSaude(getCodigo());
+                        true, 
+                        TipoOperacao.ALTERAR, 
+                        planoDeSaude);
+        
+        planosDeSaudeDialog.setVisible(true);
+        
+        criarTabelaPlanosDeSaude();
     }
+    
     private void excluir(){
         
         int resposta = JOptionPane.showConfirmDialog(
@@ -176,6 +175,11 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
     
     }
     
+     private Integer getCodigo() {
+        String codigoStr = tablePlanosDeSaude.getValueAt(linha, 0).toString();
+        return Integer.valueOf(codigoStr);
+    }
+
     
     private Integer retornarCodigoSelecionado(){
      return null;
