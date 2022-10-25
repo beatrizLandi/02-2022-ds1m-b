@@ -108,8 +108,8 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(
                     this, 
-                    "Por favor, selecione o plano que você deseja excluir!",
-                    "Plano de Saúde",
+                    "Por favor, selecione a especialidade que você deseja excluir!",
+                    "Especialidades",
                     JOptionPane.ERROR_MESSAGE);
         }
 
@@ -124,8 +124,8 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(
                 this,
-                "Por favor, selecione o plano de saúde que você deseja alterar!",
-                "Plano De Saúde",
+                "Por favor, selecione a especialidade de saúde que você deseja alterar!",
+                "Especialidade",
                 JOptionPane.WARNING_MESSAGE);
 
         }
@@ -167,8 +167,8 @@ private void editar() {
         
         int resposta = JOptionPane.showConfirmDialog(
                 this,
-                "Voce,confirma a exclusao do plano de saude selecionado?", 
-                "plano de saude", 
+                "Voce,confirma a exclusao da especialidade de saude selecionado?", 
+                "Especialidade", 
                 JOptionPane.YES_NO_OPTION, 
                 JOptionPane.QUESTION_MESSAGE);
         

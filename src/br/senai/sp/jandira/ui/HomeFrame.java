@@ -24,6 +24,7 @@ public class HomeFrame extends javax.swing.JFrame {
         initComponents();
         PlanoDeSaudeDAO.criarPlanosDeSaudeTeste();
         initPanels();
+        initPanelsEspecialidades();
         
     }
 
@@ -77,6 +78,11 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonSair.setForeground(new java.awt.Color(51, 0, 255));
         buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/exit32.png"))); // NOI18N
         buttonSair.setToolTipText("Sair do sistema");
+        buttonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSairActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonSair);
         buttonSair.setBounds(875, 100, 80, 60);
 
@@ -212,6 +218,10 @@ public class HomeFrame extends javax.swing.JFrame {
         especialidadesPanel.setVisible(true);
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
+    private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_buttonSairActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAgenda;
     private javax.swing.JButton buttonEspecialidades;
@@ -247,17 +257,17 @@ public class HomeFrame extends javax.swing.JFrame {
 
     }
 
-    
-     private void initPanelEspecialidade() {
+    //especialidade
+     private void initPanelsEspecialidades() {
 
         especialidadesPanel = new EspecialidadesPanel();
         
         especialidadesPanel.setBounds(
-                POSICAO_X, POSICAO_Y,
-                LARGURA, ALTURA);
+                POSICAO_M, POSICAO_N,
+                LARGURAespecialidade, ALTURAespecialidade);
         
-        getContentPane().add(planosDeSaudePanel);
-        planosDeSaudePanel.setVisible(false);
+        getContentPane().add(especialidadesPanel);
+        especialidadesPanel.setVisible(false);
         
 
     }

@@ -54,12 +54,12 @@ public class TesteArrayList {
 		e1.setDescricao("Cuida do coração.");
 		
 		Especialidade e2 = new Especialidade();
-		e2.setNome("Otorrino");
-		e2.setDescricao("Cuida do ouvido.");
+		e2.setNome("hematologia");
+		e2.setDescricao("especialista em identificar e tratar problemas no sangue.");
 		
 		Especialidade e3 = new Especialidade();
-		e3.setNome("Fisioterapia");
-		e3.setDescricao("Cuida dos ossos e músculos.");
+		e3.setNome("angiologista");
+		e3.setDescricao("especialista em diagnosticar e tratar doenças do sistemas venoso.");
 		
 		Especialidade teste = new Especialidade();
 		
