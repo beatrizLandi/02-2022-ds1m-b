@@ -32,16 +32,18 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
         buttonAlterarPlanoDeSaude = new javax.swing.JButton();
         buttonAdicionarPlanoDeSaude = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 0, 0));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setPreferredSize(new java.awt.Dimension(945, 370));
         setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel3.setForeground(new java.awt.Color(51, 0, 0));
         jLabel3.setText("Planos de saúde");
         add(jLabel3);
         jLabel3.setBounds(20, 10, 180, 20);
 
+        tablePlanosDeSaude.setBackground(new java.awt.Color(204, 204, 204));
         tablePlanosDeSaude.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -78,7 +80,7 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
         add(buttonAlterarPlanoDeSaude);
         buttonAlterarPlanoDeSaude.setBounds(780, 294, 70, 60);
 
-        buttonAdicionarPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/add32.png"))); // NOI18N
+        buttonAdicionarPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/7847520_hospital_clinic_covid_icon.png"))); // NOI18N
         buttonAdicionarPlanoDeSaude.setToolTipText("Adicionar plano de saúde");
         buttonAdicionarPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,13 +93,15 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
 
     private void buttonAdicionarPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarPlanoDeSaudeActionPerformed
         
-        PlanosDeSaudeDialog planosDeSaudeDialog = new PlanosDeSaudeDialog(
-                null, 
-                true ,
-                TipoOperacao.ADICIONAR, 
-                null);
-        planosDeSaudeDialog.setVisible(true);
+        PlanosDeSaudeDialog planosDeSaudeDialog = 
+                new PlanosDeSaudeDialog(
+                        null, 
+                        true,
+                        TipoOperacao.ADICIONAR,
+                        null);
         
+        planosDeSaudeDialog.setVisible(true);
+
         criarTabelaPlanosDeSaude();
         
     }//GEN-LAST:event_buttonAdicionarPlanoDeSaudeActionPerformed
@@ -124,23 +128,23 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonExcluirPlanoDeSaudeActionPerformed
 
     private void buttonAlterarPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlterarPlanoDeSaudeActionPerformed
-       
-        linha = tablePlanosDeSaude.getSelectedRow();
-        
-        if (linha !=-1){
+   
+         linha = tablePlanosDeSaude.getSelectedRow();
+        if (linha != -1) {
             editar();
-        
-        }else{
-            JOptionPane.showMessageDialog(this,
-                    "por favor selecione um plano de saude para alterar",
-                    "plano de saude",
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Por favor, selecione o plano de saúde que você deseja alterar!",
+                    "Plano De Saúde",
                     JOptionPane.WARNING_MESSAGE);
-        
+
         }
+
         
     }//GEN-LAST:event_buttonAlterarPlanoDeSaudeActionPerformed
-   
-    private void editar() {
+   private void editar() {
         
         PlanoDeSaude planoDeSaude = PlanoDeSaudeDAO.getPlanoDeSaude(getCodigo());
         
@@ -148,7 +152,7 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
                 new PlanosDeSaudeDialog(
                         null, 
                         true, 
-                        TipoOperacao.ALTERAR, 
+                        TipoOperacao.ADICIONAR, 
                         planoDeSaude);
         
         planosDeSaudeDialog.setVisible(true);

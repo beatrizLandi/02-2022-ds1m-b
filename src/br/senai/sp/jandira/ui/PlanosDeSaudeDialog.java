@@ -70,11 +70,12 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(51, 0, 0));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/add32.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/7847520_hospital_clinic_covid_icon.png"))); // NOI18N
         jLabel1.setText("Cadastro de Planos de Saúde - NOVO");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 10, 530, 30);
@@ -82,27 +83,37 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 810, 50);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalhes do plano de saúde:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(153, 0, 51))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalhes do plano de saúde:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(51, 0, 0))); // NOI18N
         jPanel2.setLayout(null);
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 0));
         jLabel2.setText("Código:");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(30, 50, 110, 16);
 
         text_Codigo.setEditable(false);
+        text_Codigo.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.add(text_Codigo);
         text_Codigo.setBounds(30, 70, 71, 30);
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 0, 0));
         jLabel3.setText("Nome da operadora:");
         jPanel2.add(jLabel3);
         jLabel3.setBounds(30, 110, 230, 16);
+
+        textNomeDaOperadora.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.add(textNomeDaOperadora);
         textNomeDaOperadora.setBounds(30, 130, 500, 30);
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel4.setText("Tipo de plano:");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(30, 170, 230, 16);
 
+        textTipoDoPlano.setBackground(new java.awt.Color(204, 204, 204));
         textTipoDoPlano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textTipoDoPlanoActionPerformed(evt);
@@ -111,10 +122,12 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         jPanel2.add(textTipoDoPlano);
         textTipoDoPlano.setBounds(30, 190, 500, 30);
 
+        buttonCancelar.setBackground(new java.awt.Color(204, 204, 204));
         buttonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cancel32.png"))); // NOI18N
         jPanel2.add(buttonCancelar);
         buttonCancelar.setBounds(370, 260, 80, 60);
 
+        buttonSalvar.setBackground(new java.awt.Color(204, 204, 204));
         buttonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/save32.png"))); // NOI18N
         buttonSalvar.setToolTipText("Salvar Cadastro");
         buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +150,7 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         // Criar um objeto Plano de Saúde
-        
+       
         
         PlanoDeSaude planoDeSaude = new PlanoDeSaude();
         planoDeSaude.setOperadora(textNomeDaOperadora.getText());
