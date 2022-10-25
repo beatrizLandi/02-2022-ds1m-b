@@ -4,16 +4,10 @@
  */
 package br.senai.sp.jandira.testes;
 
-import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
-import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 import java.util.ArrayList;
 
 
 public class EspecialidadeDAO {
    
-    PlanoDeSaude plano1 = new PlanoDeSaude("Amil", "Basic");
-       
-    
-
 }

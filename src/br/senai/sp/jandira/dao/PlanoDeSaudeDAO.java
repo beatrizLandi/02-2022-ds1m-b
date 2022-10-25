@@ -23,6 +23,11 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
         planos.add(planoDeSaude);
     }
     
+    
+    ///especialidades
+  
+    
+    //especialidades
     public static boolean excluir(Integer codigo) {
         for(PlanoDeSaude p : planos) {
             if(p.getCodigo().equals(codigo)){
