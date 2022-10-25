@@ -20,11 +20,14 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
         criarTabelaPlanosDeSaude();
     }
 
+    //especialidade
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
         jLabel3 = new javax.swing.JLabel();
         scrollTablePlanosDeSaude = new javax.swing.JScrollPane();
         tablePlanosDeSaude = new javax.swing.JTable();
@@ -193,6 +196,7 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonAdicionarPlanoDeSaude;
     private javax.swing.JButton buttonAlterarPlanoDeSaude;
     private javax.swing.JButton buttonExcluirPlanoDeSaude;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane scrollTablePlanosDeSaude;
     private javax.swing.JTable tablePlanosDeSaude;

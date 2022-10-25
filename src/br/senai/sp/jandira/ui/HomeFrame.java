@@ -10,6 +10,14 @@ public class HomeFrame extends javax.swing.JFrame {
     private final int POSICAO_Y = 180;
     private final int LARGURA = 945;
     private final int ALTURA = 370;
+    //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    
+    private EspecialidadesPanel especialidadesPanel;
+    
+    private final int POSICAO_M = 10;
+    private final int POSICAO_N = 180;
+    private final int LARGURAespecialidade = 945;
+    private final int ALTURAespecialidade = 370;
     
     public HomeFrame() {
         
@@ -95,6 +103,11 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonEspecialidades.setForeground(new java.awt.Color(51, 0, 255));
         buttonEspecialidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/134216_menu_lines_hamburger_icon.png"))); // NOI18N
         buttonEspecialidades.setToolTipText("Especialidades");
+        buttonEspecialidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEspecialidadesActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonEspecialidades);
         buttonEspecialidades.setBounds(370, 100, 80, 60);
 
@@ -192,6 +205,13 @@ public class HomeFrame extends javax.swing.JFrame {
         planosDeSaudePanel.setVisible(false);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
+    private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
+        buttonEspecialidades.setBackground(new java.awt.Color(153, 0, 153));
+        buttonHome.setBackground(new java.awt.Color(246, 246, 246));
+        panelHome.setVisible(false);
+        especialidadesPanel.setVisible(true);
+    }//GEN-LAST:event_buttonEspecialidadesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAgenda;
     private javax.swing.JButton buttonEspecialidades;
@@ -227,4 +247,18 @@ public class HomeFrame extends javax.swing.JFrame {
 
     }
 
+    
+     private void initPanelEspecialidade() {
+
+        especialidadesPanel = new EspecialidadesPanel();
+        
+        especialidadesPanel.setBounds(
+                POSICAO_X, POSICAO_Y,
+                LARGURA, ALTURA);
+        
+        getContentPane().add(planosDeSaudePanel);
+        planosDeSaudePanel.setVisible(false);
+        
+
+    }
 }
