@@ -55,5 +55,15 @@ public class Especialidade {
 	public int getQuantidade() {
 		return quantidade;
 	}
+
+    public Integer getCodigoEspecialidade() {
+        return codigoEspecialidade;
+    }
+
+    public void setCodigoEspecialidade(Integer codigoEspecialidade) {
+        this.codigoEspecialidade = codigoEspecialidade;
+    }
+        
+        
 		
 }

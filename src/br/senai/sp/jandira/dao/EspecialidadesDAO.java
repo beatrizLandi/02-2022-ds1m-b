@@ -6,6 +6,7 @@ package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 
 public class EspecialidadesDAO {
@@ -72,7 +73,26 @@ public class EspecialidadesDAO {
 
     }
     
+   public static DefaultTableModel getTableModel(){
+            
+          
+            Object[][] dados = new Object[especialidades.size()][3];
+          
+            int i = 0;
+            for(Especialidade p : especialidades){
+               dados[i][0] = p.getCodigoEspecialidade();
+               dados[i][1] = p.getNome();
+               dados[i][2] = p.getDescricao();
+               i++;
+            }
+        // Defnir um vetor com os nomes das colunas da tabela 
+        String[] titulos = {"Código", "Nome da especialidade ","Descrição"};
+        
     
+        DefaultTableModel tableModel = new DefaultTableModel(dados, titulos);
+        
+        return tableModel;
+        }
     
    
  }

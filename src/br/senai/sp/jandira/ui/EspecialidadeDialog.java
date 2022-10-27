@@ -4,46 +4,47 @@
  */
 package br.senai.sp.jandira.ui;
 
-import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
+
 import br.senai.sp.jandira.model.Especialidade;
-import br.senai.sp.jandira.model.PlanoDeSaude;
+import br.senai.sp.jandira.dao.EspecialidadesDAO;
 import br.senai.sp.jandira.model.TipoOperacao;
-import br.senai.sp.jandira.testes.EspecialidadeDAO;
+import java.awt.Frame;
+
 import javax.swing.JOptionPane;
 
 public class EspecialidadeDialog extends javax.swing.JPanel {
 
-     private TipoOperacao tipoOperacao;
-     private Especialidade especialidade;
-             
-    public EspecialidadeDialog( java.awt.Frame parent,
+     
+   private TipoOperacao tipoOperacao;
+    private Especialidade especialidade;
+
+    public EspecialidadeDialog(
+            java.awt.Frame parent,
             boolean modal,
             TipoOperacao tipoOperacao,
-            PlanoDeSaude planoDeSaude) {
-        
-        super(parent, modal);
+            Especialidade especialidade) {
+
+        //super(parent,modal);
         initComponents();
         this.tipoOperacao = tipoOperacao;
         this.especialidade = especialidade;
-        
-        //prencher campos
-        //prencher campos
-        if(tipoOperacao== TipoOperacao.ALTERAR){
-            preecherFormulario();
-        
-        
-    }
-    
-    private void preencherFormularioEspecialidade(){
-        
-        
-        text_Codigo.setText(especialidade.getNome().toString());
-        textNomeDaEspecialidade.setText(especialidade.getOperadora());
-        
-    }
 
+        if (tipoOperacao == TipoOperacao.ALTERAR) {
+            preencherFormulario();
+        }
+        
+        
+    }
  
-    @SuppressWarnings("unchecked")
+    
+    private void preencherFormulario(){
+        
+        
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/sena/sp/jandira/imagens/")));
+        text_Codigo.setText(especialidade.getCodigoEspecialidade().toString());
+        textNomeDaEspecialidade.setText(especialidade.getNome());
+        textDescricaoEspecialidade.setText(especialidade.getDescricao());
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -140,57 +141,75 @@ public class EspecialidadeDialog extends javax.swing.JPanel {
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
            
-        Especialidade especialidade = new Especialidade();
-        especialidade.setNome(text.getText());
-        especialidade.setDescricao(textDescricaoEspecialidade.getText());
-        
-        if (validarCadastro()){
-            EspecialidadeDAO.gravar(especialidade);
-            
-            JOptionPane.showMessageDialog(
-                    this, 
-                    "Especialidade de saúde gravado com sucesso!", 
-                    "Especialidade", 
-                    JOptionPane.INFORMATION_MESSAGE);
-            
-            dispose();
+        if (tipoOperacao == TipoOperacao.ADICIONAR) {
+            gravar();
+        } else {
+            atualizar();
         }
-     
-
+        
     }//GEN-LAST:event_buttonSalvarActionPerformed
- private boolean validarCadastro() {
+  private void atualizar() {
         
-        if (textNomeDaEspecialidade.getText().isEmpty()){
+        especialidade.setNome(textNomeDaEspecialidade.getText());
+        especialidade.setDescricao(textDescricaoEspecialidade.getText());
+
+        if (validarCadastro()) {
+            EspecialidadesDAO.alterar(especialidade);
             
             JOptionPane.showMessageDialog(
-                    this, 
-                    "Por favor preencha o nome da oEspecialidade!", 
-                    "Especialidade", 
-                    JOptionPane.ERROR_MESSAGE);
-            
-            textNomeDaEspecialidade.requestFocus();
-            
-            return false;
-            
+                    null,
+                    "Especialidade atualizada com sucesso!",
+                    "Especialidade",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            //dispose();
         }
-        
-        if (textNomeDaEspecialidade.getText().isEmpty()) {
-            
-            JOptionPane.showMessageDialog(
-                    this, 
-                    "Por favor preencha o nome da especialidade!", 
-                    "especialidade", 
-                    JOptionPane.ERROR_MESSAGE);
-            
-            textNomeDaEspecialidade.requestFocus();
-            
-            return false;
-            
-        }
-        
-        return true;
-        
     }
+            
+      private void gravar() {
+        //Criar um objeto plano de saúde 
+        Especialidade especialidade = new Especialidade();
+        especialidade.setNome(textNomeDaEspecialidade.getText());
+        especialidade.setDescricao(textDescricaoEspecialidade.getText());
+
+        if (validarCadastro()) {
+            EspecialidadesDAO.gravar(especialidade);
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Especialidade gravada com sucesso!",
+                    "Especialidade",
+                    JOptionPane.INFORMATION_MESSAGE);
+          //  dispose();
+        }
+    }
+    
+    private boolean validarCadastro() {
+        if (textNomeDaEspecialidade.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Por favor, preencha o nome da especialidade!",
+                    "Especialidade",
+                    JOptionPane.ERROR_MESSAGE);
+
+            textNomeDaEspecialidade.requestFocus();
+
+            return false;
+        }
+        if (textDescricaoEspecialidade.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Por favor, preencha a descrição da especialidade!",
+                    "Plano de saúde",
+                    JOptionPane.ERROR_MESSAGE);
+
+            textDescricaoEspecialidade.requestFocus();
+
+            return false;
+        }
+        return true;
+}   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancelar;
@@ -205,18 +224,5 @@ public class EspecialidadeDialog extends javax.swing.JPanel {
     private javax.swing.JTextField textNomeDaEspecialidade;
     private javax.swing.JTextField text_Codigo;
     // End of variables declaration//GEN-END:variables
-
-private void preecherFormularioEspecialidade() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-  
-    
-    }
-
-    private void preecherFormulario() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private void initComponents() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
 }

@@ -155,7 +155,7 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
                 new PlanosDeSaudeDialog(
                         null, 
                         true, 
-                        TipoOperacao.ADICIONAR, 
+                        TipoOperacao.ALTERAR, 
                         planoDeSaude);
         
         planosDeSaudeDialog.setVisible(true);
