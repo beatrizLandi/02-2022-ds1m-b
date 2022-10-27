@@ -11,12 +11,12 @@ import br.senai.sp.jandira.model.TipoOperacao;
 import br.senai.sp.jandira.testes.EspecialidadeDAO;
 import javax.swing.JOptionPane;
 
-public class EspeialidadeDialog extends javax.swing.JPanel {
+public class EspecialidadeDialog extends javax.swing.JPanel {
 
      private TipoOperacao tipoOperacao;
      private Especialidade especialidade;
              
-    public EspeialidadeDialog( java.awt.Frame parent,
+    public EspecialidadeDialog( java.awt.Frame parent,
             boolean modal,
             TipoOperacao tipoOperacao,
             PlanoDeSaude planoDeSaude) {
