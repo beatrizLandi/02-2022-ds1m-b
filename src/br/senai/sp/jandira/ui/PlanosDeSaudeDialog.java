@@ -75,6 +75,7 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/7847520_hospital_clinic_covid_icon.png"))); // NOI18N
         jLabel1.setText("Cadastro de Planos de Saúde - NOVO");
         jPanel1.add(jLabel1);
@@ -109,6 +110,7 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         textNomeDaOperadora.setBounds(30, 130, 500, 30);
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 0, 0));
         jLabel4.setText("Tipo de plano:");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(30, 170, 230, 16);

@@ -5,28 +5,56 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class EspecialidadesDAO {
+
     //atributos
     private Especialidade especialidade;
     //listas
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
+    private static final String ARQUIVO = "C:\\Users\\22282076\\java\\planoSaude.txt";
+    private static final  Path PATH = Paths.get(ARQUIVO);
+   
+            
 
-    
     //metodosS2
-    
-    public EspecialidadesDAO (Especialidade especialidade) {
+    public EspecialidadesDAO(Especialidade especialidade) {
         this.especialidades.add(especialidade);
     }
-    
-     public static void gravar(Especialidade especialidade) {
+
+    public static void gravar(Especialidade especialidade) {
         especialidades.add(especialidade);
+        //gravar a especialidades2s2
+        try {
+            BufferedWriter bw = Files.newBufferedWriter(
+                    PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            bw.newLine();
+            bw.write(especialidade.getEspecialidadeSeparado());
+            bw.write("conteudo gravado");
+            bw.close();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(
+            null,
+            "erro ao gravar", 
+            "erro de gravação",
+            JOptionPane.ERROR_MESSAGE);
+        }
     }
-         
-         public static boolean excluir(Integer codigo) {
+
+    public static boolean excluir(Integer codigo) {
         for (Especialidade p : especialidades) {
             if (p.getCodigoEspecialidade().equals(codigo)) {
                 especialidades.remove(p);
@@ -36,6 +64,7 @@ public class EspecialidadesDAO {
         return false;
 
     }
+
     public static Especialidade getEspecialidade(Integer codigo) {
 
         for (Especialidade p : especialidades) {
@@ -46,8 +75,7 @@ public class EspecialidadesDAO {
 
         return null;
     }
-    
-    
+
     public static void alterar(Especialidade especialidade) {
 
         for (Especialidade p : especialidades) {
@@ -58,11 +86,11 @@ public class EspecialidadesDAO {
 
         }
     }
-    
+
     public static ArrayList<Especialidade> listarTodos() {
         return especialidades;
     }
-    
+
     public static void criarEspecialidadesTeste() {
         Especialidade e1 = new Especialidade("Cardiologia", "Cuida do coração");
         Especialidade e2 = new Especialidade("hematologia", "especialista em identificar e tratar problemas no sangue");
@@ -72,27 +100,24 @@ public class EspecialidadesDAO {
         especialidades.add(e3);
 
     }
-    
-   public static DefaultTableModel getTableModel(){
-            
-          
-            Object[][] dados = new Object[especialidades.size()][3];
-          
-            int i = 0;
-            for(Especialidade p : especialidades){
-               dados[i][0] = p.getCodigoEspecialidade();
-               dados[i][1] = p.getNome();
-               dados[i][2] = p.getDescricao();
-               i++;
-            }
-        // Defnir um vetor com os nomes das colunas da tabela 
-        String[] titulos = {"Código", "Nome da especialidade ","Descrição"};
-        
-    
-        DefaultTableModel tableModel = new DefaultTableModel(dados, titulos);
-        
-        return tableModel;
+
+    public static DefaultTableModel getTableModel() {
+
+        Object[][] dados = new Object[especialidades.size()][3];
+
+        int i = 0;
+        for (Especialidade p : especialidades) {
+            dados[i][0] = p.getCodigoEspecialidade();
+            dados[i][1] = p.getNome();
+            dados[i][2] = p.getDescricao();
+            i++;
         }
-    
-   
- }
+        // Defnir um vetor com os nomes das colunas da tabela 
+        String[] titulos = {"Código", "Nome da especialidade ", "Descrição"};
+
+        DefaultTableModel tableModel = new DefaultTableModel(dados, titulos);
+
+        return tableModel;
+    }
+
+}

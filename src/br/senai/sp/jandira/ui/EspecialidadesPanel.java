@@ -4,6 +4,7 @@
  */
 package br.senai.sp.jandira.ui;
 
+import br.senai.sp.jandira.dao.EspecialidadesDAO;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 import br.senai.sp.jandira.model.TipoOperacao;
 import br.senai.sp.jandira.model.Especialidade;
@@ -21,7 +22,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
     
     public EspecialidadesPanel(){
         initComponents();
-        criarTabela();
+        criarTabelaEspecialidadess();
     
     }
     
@@ -102,7 +103,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
        linha = tableEspecialidades.getSelectedRow();
         
         if (linha != -1 ){
-            // Excluir o plano de saúde
+            // Excluir especialidade
             excluir();
             
         } else {
@@ -126,7 +127,8 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
                 this,
                 "Por favor, selecione a especialidade de saúde que você deseja alterar!",
                 "Especialidade",
-                JOptionPane.WARNING_MESSAGE);
+                JOptionPane.WARNING_MESSAGE
+                );
 
         }
 
@@ -134,33 +136,36 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
 
     private void buttonAdicionarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarEspecialidadeActionPerformed
 
-        PlanosDeSaudeDialog planosDeSaudeDialog =
-        new PlanosDeSaudeDialog(
-            null,
-            true,
-            TipoOperacao.ADICIONAR,
-            null);
+        
+        //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+         EspecialidadeDialog especialidadeDialog = 
+                new EspecialidadeDialog(
+                        null, 
+                        true,
+                        TipoOperacao.ADICIONAR,
+                        null);
+        
+        especialidadeDialog.setVisible(true);
 
-        planosDeSaudeDialog.setVisible(true);
-
-        criarTabela();
+        criarTabelaEspecialidadess();
+        
 
     }//GEN-LAST:event_buttonAdicionarEspecialidadeActionPerformed
 
 private void editar() {
         
-        PlanoDeSaude planoDeSaude = PlanoDeSaudeDAO.getPlanoDeSaude(getCodigo());
+        Especialidade especialidade = EspecialidadesDAO.getEspecialidade(getCodigo());
         
-        PlanosDeSaudeDialog planosDeSaudeDialog = 
-                new PlanosDeSaudeDialog(
+        EspecialidadeDialog especialidadeDialog = 
+                new EspecialidadeDialog(
                         null, 
                         true, 
-                        TipoOperacao.ADICIONAR, 
-                        planoDeSaude);
+                        TipoOperacao.ALTERAR, 
+                        especialidade);
         
-        planosDeSaudeDialog.setVisible(true);
+        especialidadeDialog.setVisible(true);
         
-        criarTabela();
+        criarTabelaEspecialidadess();
     }
     
     private void excluir(){
@@ -175,8 +180,8 @@ private void editar() {
         if (resposta ==0){
             String codigoStr = tableEspecialidades.getValueAt(linha, 0).toString();
             Integer codigo = Integer.valueOf(codigoStr);
-            PlanoDeSaudeDAO.excluir(codigo);
-            criarTabela();
+            EspecialidadesDAO.excluir(codigo);
+            criarTabelaEspecialidadess();
         }
         
     
@@ -188,9 +193,7 @@ private void editar() {
     }
 
     
-    private Integer retornarCodigoSelecionado(){
-     return null;
-    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionarEspecialidade;
     private javax.swing.JButton buttonAlterarEspecialidade;
@@ -200,9 +203,9 @@ private void editar() {
     private javax.swing.JTable tableEspecialidades;
     // End of variables declaration//GEN-END:variables
 
-   private void criarTabela() {
+   private void criarTabelaEspecialidadess() {
 
-        tableEspecialidades.setModel(PlanoDeSaudeDAO.getTableModel());
+        tableEspecialidades.setModel(EspecialidadesDAO.getTableModel());
 
         // Desativar o redimensionamento da JTable
         tableEspecialidades.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

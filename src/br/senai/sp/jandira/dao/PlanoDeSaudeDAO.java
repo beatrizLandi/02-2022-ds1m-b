@@ -10,6 +10,7 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
 
     private PlanoDeSaude planoDeSaude;
     private static ArrayList<PlanoDeSaude> planos = new ArrayList<>();
+    
 
     public PlanoDeSaudeDAO(PlanoDeSaude planoDeSaude) {
         this.planos.add(planoDeSaude);

@@ -64,6 +64,9 @@ public class Especialidade {
         this.codigoEspecialidade = codigoEspecialidade;
     }
         
-        
+        public String getEspecialidadeSeparado() {
+        return this.getDescricao() + ";" + this.nome + ";" + this.descricao;
+
+    }
 		
 }

@@ -1,21 +1,21 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package br.senai.sp.jandira.ui;
 
-
-import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.dao.EspecialidadesDAO;
+import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.TipoOperacao;
-import java.awt.Frame;
-
 import javax.swing.JOptionPane;
 
-public class EspecialidadeDialog extends javax.swing.JPanel {
+/**
+ *
+ * @author sn1006137
+ */
+public class EspecialidadeDialog extends javax.swing.JDialog {
 
-     
-   private TipoOperacao tipoOperacao;
+    private TipoOperacao tipoOperacao;
     private Especialidade especialidade;
 
     public EspecialidadeDialog(
@@ -24,27 +24,26 @@ public class EspecialidadeDialog extends javax.swing.JPanel {
             TipoOperacao tipoOperacao,
             Especialidade especialidade) {
 
-        //super(parent,modal);
+        super(parent, modal);
         initComponents();
         this.tipoOperacao = tipoOperacao;
         this.especialidade = especialidade;
 
         if (tipoOperacao == TipoOperacao.ALTERAR) {
-            preencherFormulario();
+            preencherFormularioESpecialidade();
         }
-        
-        
+
     }
- 
-    
-    private void preencherFormulario(){
-        
-        
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/sena/sp/jandira/imagens/")));
+
+    private void preencherFormularioESpecialidade() {
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png")));
         text_Codigo.setText(especialidade.getCodigoEspecialidade().toString());
         textNomeDaEspecialidade.setText(especialidade.getNome());
-        textDescricaoEspecialidade.setText(especialidade.getDescricao());
+        textDescricao.setText(especialidade.getDescricao());
     }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -56,28 +55,31 @@ public class EspecialidadeDialog extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         textNomeDaEspecialidade = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        textDescricaoEspecialidade = new javax.swing.JTextField();
-        buttonCancelar = new javax.swing.JButton();
+        textDescricao = new javax.swing.JTextField();
         buttonSalvar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(810, 50));
-        setLayout(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(250, 500));
+        setPreferredSize(new java.awt.Dimension(250, 500));
+        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setForeground(new java.awt.Color(51, 0, 0));
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/7847520_hospital_clinic_covid_icon.png"))); // NOI18N
-        jLabel1.setText("Cadastro de Especialidade - NOVO");
+        jLabel1.setText("Cadastro de Especialidades - NOVO");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 10, 530, 30);
 
-        add(jPanel1);
-        jPanel1.setBounds(0, 0, 810, 50);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 590, 50);
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(560, 340));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalhes da especialidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(51, 0, 0))); // NOI18N
         jPanel2.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -102,23 +104,19 @@ public class EspecialidadeDialog extends javax.swing.JPanel {
         textNomeDaEspecialidade.setBounds(30, 130, 500, 30);
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel4.setText("Descrição especialidade:");
+        jLabel4.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel4.setText("Descrição:");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(30, 170, 230, 16);
 
-        textDescricaoEspecialidade.setBackground(new java.awt.Color(204, 204, 204));
-        textDescricaoEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+        textDescricao.setBackground(new java.awt.Color(204, 204, 204));
+        textDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textDescricaoEspecialidadeActionPerformed(evt);
+                textDescricaoActionPerformed(evt);
             }
         });
-        jPanel2.add(textDescricaoEspecialidade);
-        textDescricaoEspecialidade.setBounds(30, 190, 500, 30);
-
-        buttonCancelar.setBackground(new java.awt.Color(204, 204, 204));
-        buttonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cancel32.png"))); // NOI18N
-        jPanel2.add(buttonCancelar);
-        buttonCancelar.setBounds(370, 260, 80, 60);
+        jPanel2.add(textDescricao);
+        textDescricao.setBounds(30, 190, 500, 30);
 
         buttonSalvar.setBackground(new java.awt.Color(204, 204, 204));
         buttonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/save32.png"))); // NOI18N
@@ -131,98 +129,87 @@ public class EspecialidadeDialog extends javax.swing.JPanel {
         jPanel2.add(buttonSalvar);
         buttonSalvar.setBounds(460, 260, 80, 60);
 
-        add(jPanel2);
-        jPanel2.setBounds(0, 90, 810, 350);
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cancel32.png"))); // NOI18N
+        jPanel2.add(jButton1);
+        jButton1.setBounds(365, 260, 80, 60);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(10, 60, 560, 340);
+
+        setBounds(0, 0, 602, 459);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textDescricaoEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDescricaoEspecialidadeActionPerformed
-     
-    }//GEN-LAST:event_textDescricaoEspecialidadeActionPerformed
+    private void textDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textDescricaoActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-           
-        if (tipoOperacao == TipoOperacao.ADICIONAR) {
-            gravar();
-        } else {
-            atualizar();
-        }
-        
-    }//GEN-LAST:event_buttonSalvarActionPerformed
-  private void atualizar() {
-        
-        especialidade.setNome(textNomeDaEspecialidade.getText());
-        especialidade.setDescricao(textDescricaoEspecialidade.getText());
+        // Criar um objeto Plano de Saúde
 
-        if (validarCadastro()) {
-            EspecialidadesDAO.alterar(especialidade);
-            
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Especialidade atualizada com sucesso!",
-                    "Especialidade",
-                    JOptionPane.INFORMATION_MESSAGE);
-
-            //dispose();
-        }
-    }
-            
-      private void gravar() {
-        //Criar um objeto plano de saúde 
         Especialidade especialidade = new Especialidade();
         especialidade.setNome(textNomeDaEspecialidade.getText());
-        especialidade.setDescricao(textDescricaoEspecialidade.getText());
+        especialidade.setDescricao(textDescricao.getText());
 
         if (validarCadastro()) {
             EspecialidadesDAO.gravar(especialidade);
 
             JOptionPane.showMessageDialog(
                     this,
-                    "Especialidade gravada com sucesso!",
-                    "Especialidade",
+                    "especialidade gravada com sucesso!",
+                    "especialidades",
                     JOptionPane.INFORMATION_MESSAGE);
-          //  dispose();
+
+            dispose();
         }
-    }
-    
-    private boolean validarCadastro() {
-        if (textNomeDaEspecialidade.getText().isEmpty()) {
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Por favor, preencha o nome da especialidade!",
-                    "Especialidade",
-                    JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_buttonSalvarActionPerformed
 
-            textNomeDaEspecialidade.requestFocus();
-
-            return false;
-        }
-        if (textDescricaoEspecialidade.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Por favor, preencha a descrição da especialidade!",
-                    "Plano de saúde",
-                    JOptionPane.ERROR_MESSAGE);
-
-            textDescricaoEspecialidade.requestFocus();
-
-            return false;
-        }
-        return true;
-}   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonSalvar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField textDescricaoEspecialidade;
+    private javax.swing.JTextField textDescricao;
     private javax.swing.JTextField textNomeDaEspecialidade;
     private javax.swing.JTextField text_Codigo;
     // End of variables declaration//GEN-END:variables
- 
+
+    private boolean validarCadastro() {
+        if (textNomeDaEspecialidade.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Por favor preencha o nome da especialidade!",
+                    "especialidade",
+                    JOptionPane.ERROR_MESSAGE);
+
+            textNomeDaEspecialidade.requestFocus();
+
+            return false;
+
+        }
+
+        if (textDescricao.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Por favor preencha o descrição da especialidadeo!",
+                    "especialidade",
+                    JOptionPane.ERROR_MESSAGE);
+
+            textDescricao.requestFocus();
+
+            return false;
+
+        }
+
+        return true;
+    }
+
 }

@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.ui;
 
+import br.senai.sp.jandira.dao.EspecialidadesDAO;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 
 public class HomeFrame extends javax.swing.JFrame {
@@ -23,8 +24,8 @@ public class HomeFrame extends javax.swing.JFrame {
         
         initComponents();
         PlanoDeSaudeDAO.criarPlanosDeSaudeTeste();
+        EspecialidadesDAO.criarEspecialidadesTeste();
         initPanels();
-        initPanelsEspecialidades();
         
     }
 
@@ -196,7 +197,7 @@ public class HomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPlanosDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanosDeSaudeActionPerformed
-        
+        buttonEspecialidades.setBackground(new java.awt.Color(246, 246, 246));
         buttonPlanosDeSaude.setBackground(new java.awt.Color(153, 0, 153));
         buttonHome.setBackground(new java.awt.Color(246, 246, 246));
         panelHome.setVisible(false);
@@ -206,12 +207,14 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         buttonPlanosDeSaude.setBackground(new java.awt.Color(246, 246, 246));
+        buttonEspecialidades.setBackground(new java.awt.Color(246, 246, 246));
         buttonHome.setBackground(new java.awt.Color(153, 0, 153));
         panelHome.setVisible(true);
         planosDeSaudePanel.setVisible(false);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
+        buttonPlanosDeSaude.setBackground(new java.awt.Color(246, 246, 246));
         buttonEspecialidades.setBackground(new java.awt.Color(153, 0, 153));
         buttonHome.setBackground(new java.awt.Color(246, 246, 246));
         panelHome.setVisible(false);
@@ -254,12 +257,6 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(planosDeSaudePanel);
         planosDeSaudePanel.setVisible(false);
         
-
-    }
-
-    //especialidade
-     private void initPanelsEspecialidades() {
-
         especialidadesPanel = new EspecialidadesPanel();
         
         especialidadesPanel.setBounds(
@@ -271,4 +268,5 @@ public class HomeFrame extends javax.swing.JFrame {
         
 
     }
+
 }
