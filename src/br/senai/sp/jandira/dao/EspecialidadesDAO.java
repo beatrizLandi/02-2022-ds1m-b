@@ -23,7 +23,7 @@ public class EspecialidadesDAO {
     private Especialidade especialidade;
     //listas
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
-    private static final String ARQUIVO = "C:\\Users\\22282076\\java\\planoSaude.txt";
+    private static final String ARQUIVO = "C:\\Users\\22282076\\java\\especialidades";
     private static final  Path PATH = Paths.get(ARQUIVO);
    
             
@@ -41,6 +41,12 @@ public class EspecialidadesDAO {
                     PATH,
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
+            
+            String novoEspecialidade = especialidade.getEspecialidadeSeparado();
+            
+            bw.write(novoEspecialidade);
+            
+            
             bw.newLine();
             bw.write(especialidade.getEspecialidadeSeparado());
             bw.write("conteudo gravado");
@@ -53,7 +59,7 @@ public class EspecialidadesDAO {
             JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//------------------------------------------------------------------------------
     public static boolean excluir(Integer codigo) {
         for (Especialidade p : especialidades) {
             if (p.getCodigoEspecialidade().equals(codigo)) {
@@ -64,7 +70,8 @@ public class EspecialidadesDAO {
         return false;
 
     }
-
+    
+    //--------------------------------------------
     public static Especialidade getEspecialidade(Integer codigo) {
 
         for (Especialidade p : especialidades) {
@@ -75,7 +82,7 @@ public class EspecialidadesDAO {
 
         return null;
     }
-
+//-------------------------------------------
     public static void alterar(Especialidade especialidade) {
 
         for (Especialidade p : especialidades) {
@@ -91,13 +98,13 @@ public class EspecialidadesDAO {
         return especialidades;
     }
 
-    public static void criarEspecialidadesTeste() {
-        Especialidade e1 = new Especialidade("Cardiologia", "Cuida do coração");
-        Especialidade e2 = new Especialidade("hematologia", "especialista em identificar e tratar problemas no sangue");
-        Especialidade e3 = new Especialidade("angiologista", "especialista em diagnosticar e tratar doenças do sistemas venoso.");
-        especialidades.add(e1);
-        especialidades.add(e2);
-        especialidades.add(e3);
+    public static void getEspecialidadesTeste() {
+       // Especialidade e1 = new Especialidade("Cardiologia", "Cuida do coração");
+        //Especialidade e2 = new Especialidade("hematologia", "especialista em identificar e tratar problemas no sangue");
+        //Especialidade e3 = new Especialidade("angiologista", "especialista em diagnosticar e tratar doenças do sistemas venoso.");
+        //especialidades.add(e1);
+        //especialidades.add(e2);
+       // especialidades.add(e3);
 
     }
 
