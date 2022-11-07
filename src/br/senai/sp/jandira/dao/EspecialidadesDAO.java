@@ -36,27 +36,23 @@ public class EspecialidadesDAO {
     public static void gravar(Especialidade especialidade) {
         especialidades.add(especialidade);
         //gravar a especialidades2s2
-        try {
+         try {
+            // gravar planos de saude em arquivo txt
             BufferedWriter bw = Files.newBufferedWriter(
                     PATH,
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
             
-            String novoEspecialidade = especialidade.getEspecialidadeSeparado();
-            
-            bw.write(novoEspecialidade);
-            
-            
-            bw.newLine();
             bw.write(especialidade.getEspecialidadeSeparado());
-            bw.write("conteudo gravado");
+            bw.newLine();
             bw.close();
+            
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(
-            null,
-            "erro ao gravar", 
-            "erro de gravação",
-            JOptionPane.ERROR_MESSAGE);
+                    null, 
+                    "Ocorreu um erro ao gravar a especialidade. \n\nEntre em contato com o suporte.", 
+                    "Erro ao gravar", 
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 //------------------------------------------------------------------------------

@@ -58,6 +58,26 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
 //------------------------------------------------------------------------------
     public static void gravar(PlanoDeSaude planoDeSaude) {
         planos.add(planoDeSaude);
+        
+        try {
+            // gravar planos de saude em arquivo txt
+            BufferedWriter bw = Files.newBufferedWriter(
+                    PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+
+            bw.write(planoDeSaude.getPlanoDeSaudeSeparado());
+            bw.newLine();
+            bw.close();
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Ocorreu um erro ao gravar o plano de saúde. \n\nEntre em contato com o suporte.",
+                    "Erro ao gravar",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
     
     
@@ -78,7 +98,44 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
     
  ///REFAZER ISTO
     //criar uma representação dos arquivos que serão manipulados
+   private static void atualizarArquivo() {
    
+   File arquivoAtual = new File(ARQUIVO);
+   File arquivoTemp = new File(ARQUIVO_TEMP);
+   
+    try {
+            //Criar arquivo temporário
+            arquivoTemp.createNewFile();
+
+            // Abrir o arquivo temporário para escrita
+            BufferedWriter bwTemp = Files.newBufferedWriter(
+                    PATH__TEMP;
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+
+            //Iterar na lista para adicionar os planos no arquivo temporário
+            for (PlanoDeSaude p : planos) {
+                bwTemp.write(p.getPlanoDeSaudeSeparado());
+                bwTemp.newLine();
+            }
+            
+             //Fechar o arquivo temporario
+            bwTemp.close();
+
+            //Excluir arquivo atual - plano_de_saude.txt
+            arquivoAtual.delete();
+
+            // Renomear arquivo temporário 
+            arquivoTemp.renameTo(arquivoAtual);
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gerar o arquivo!",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+   
+   
+   }
    
     
     //------------------------------------------------------------------------------
@@ -96,38 +153,32 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
         return planos;
     }
     //--------------------------------------------------------------------------
+ 
+
     public static void getListaPlanosDeSaude() {
-        
+
+        //Abrir o arquivo para leitura
         try {
-            //abrir p leitura
-            
             BufferedReader br = Files.newBufferedReader(PATH);
-            
-            String linha = br.readLine();
-            
-            //loping while
-            
-            while (linha != null && linha.isEmpty()) {
-            String[] linhaVetor = linha.split(";");
-            PlanoDeSaude novoPlanoDeSaude = new PlanoDeSaude(
-                    Integer.valueOf(linhaVetor[0]),
-                    linhaVetor[1],
-                    linhaVetor[2]);
-                //colocar dentro da lista
-                
+            String linha = "";
+
+            linha = br.readLine();
+
+            while (linha != null && !linha.isEmpty()) {
+                String[] linhaVetor = linha.split(";");
+                System.out.println(linhaVetor[0]);
+                PlanoDeSaude novoPlanoDeSaude = new PlanoDeSaude(
+                        Integer.valueOf(linhaVetor[0]), linhaVetor[1], linhaVetor[2]);
+
                 planos.add(novoPlanoDeSaude);
-                //fechar o luping
                 linha = br.readLine();
-         }
-            br.close();        
-            
+            }
+
+            br.close();
+
         } catch (IOException ex) {
-           JOptionPane.showMessageDialog(null, 
-                   "erroao abrir",
-                   "erro de leitura", 
-                   JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro.", "Erro na leitura", JOptionPane.ERROR_MESSAGE);
         }
-    }
     //--------------------------------------------------------------------------
     // PlanoDeSaude p1 = new PlanoDeSaude("Unimed", "Bronze");
             // PlanoDeSaude p2 = new PlanoDeSaude("Unimed", "Ouro");
@@ -166,4 +217,9 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
 
     }
 //------------------------------------------------------------------------------
+
+
+
+
+
 }
