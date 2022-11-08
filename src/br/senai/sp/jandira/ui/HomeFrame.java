@@ -64,7 +64,7 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(51, 0, 0));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel1.setText("Sistema para Agendamento de Consultas");
+        jLabel1.setText("♡❤Sistema para Agendamento de Consultas❤♡");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(90, 20, 740, 40);
 
@@ -139,7 +139,7 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(51, 0, 0));
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel3.setText("SISACON");
+        jLabel3.setText("SISACON❤");
         panelHome.add(jLabel3);
         jLabel3.setBounds(40, 60, 310, 50);
 

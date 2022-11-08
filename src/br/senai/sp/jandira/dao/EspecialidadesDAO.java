@@ -27,12 +27,12 @@ public class EspecialidadesDAO {
     private static final  Path PATH = Paths.get(ARQUIVO);
    
             
-
+//------------------------------------------------------------------------------
     //metodosS2
     public EspecialidadesDAO(Especialidade especialidade) {
         this.especialidades.add(especialidade);
     }
-
+//------------------------------------------------------------------------------
     public static void gravar(Especialidade especialidade) {
         especialidades.add(especialidade);
         //gravar a especialidades2s2
@@ -51,7 +51,7 @@ public class EspecialidadesDAO {
             JOptionPane.showMessageDialog(
                     null, 
                     "Ocorreu um erro ao gravar a especialidade. \n\nEntre em contato com o suporte.", 
-                    "Erro ao gravar", 
+                    "Erro ", 
                     JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -89,7 +89,7 @@ public class EspecialidadesDAO {
 
         }
     }
-
+//-----------------------------------------------------------------------------------------
     public static ArrayList<Especialidade> listarTodos() {
         return especialidades;
     }
@@ -103,7 +103,7 @@ public class EspecialidadesDAO {
        // especialidades.add(e3);
 
     }
-
+//-------------------------------------------------------------------------------------------------------------
     public static DefaultTableModel getTableModel() {
 
         Object[][] dados = new Object[especialidades.size()][3];
@@ -122,5 +122,5 @@ public class EspecialidadesDAO {
 
         return tableModel;
     }
-
+//----------------------------------------------------------------------------------
 }

@@ -12,10 +12,7 @@ import br.senai.sp.jandira.model.PlanoDeSaude;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-/**
- *
- * @author 22282076
- */
+///-----------------------------------------------------------------------------------
 public class EspecialidadesPanel extends javax.swing.JPanel {
 
     int linha;
@@ -44,9 +41,9 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel3.setText("Especialidades");
+        jLabel3.setText("ESPECIALIDADES");
         add(jLabel3);
-        jLabel3.setBounds(20, 10, 180, 20);
+        jLabel3.setBounds(20, 10, 210, 20);
 
         tableEspecialidades.setBackground(new java.awt.Color(204, 204, 204));
         tableEspecialidades.setModel(new javax.swing.table.DefaultTableModel(
@@ -98,7 +95,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
 
     private void buttonExcluirEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirEspecialidadeActionPerformed
 
-       
+       //--------------------------------------------------------------------------------------------------------------------------
         //obetnhamos linha selecionada na tabela
        linha = tableEspecialidades.getSelectedRow();
         
@@ -115,7 +112,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_buttonExcluirEspecialidadeActionPerformed
-
+//-------------------------------------------------------------------------------------------------------------------------------------
     private void buttonAlterarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlterarEspecialidadeActionPerformed
 
         linha = tableEspecialidades.getSelectedRow();
@@ -133,7 +130,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_buttonAlterarEspecialidadeActionPerformed
-
+//--------------------------------------------------------------------------------------------------------------
     private void buttonAdicionarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarEspecialidadeActionPerformed
 
         
@@ -151,7 +148,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         
 
     }//GEN-LAST:event_buttonAdicionarEspecialidadeActionPerformed
-
+//-------------------------------------------------------------------------------------------
 private void editar() {
         
         Especialidade especialidade = EspecialidadesDAO.getEspecialidade(getCodigo());
@@ -167,7 +164,7 @@ private void editar() {
         
         criarTabelaEspecialidadess();
     }
-    
+    //---------------------------------------------------------------------------------
     private void excluir(){
         
         int resposta = JOptionPane.showConfirmDialog(
@@ -186,13 +183,16 @@ private void editar() {
         
     
     }
-    
+    //-------------------------------------------------------------------------------
      private Integer getCodigo() {
         String codigoStr = tableEspecialidades.getValueAt(linha, 0).toString();
         return Integer.valueOf(codigoStr);
     }
 
-    
+    //-----------------------------------------------------------------------------------
+      private Integer retornarCodigoSelecionadoEspecialidade(){
+     return null;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionarEspecialidade;

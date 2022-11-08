@@ -21,7 +21,7 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
 
     private PlanoDeSaude planoDeSaude;
     private static ArrayList<PlanoDeSaude> planos = new ArrayList<>();
-    private static  final String ARQUIVO = "C:\\Users\\22282076\\java\\plano_de_saude.txt";
+    private static  final String ARQUIVO = "C:\\Users\\22282076\\clinicaBancoDados\\planoDeSaude.txt";
     private static  final String ARQUIVO_TEMP = "C:\\Users\\22282076\\java\\plano_de_saude_temp.txt";
     private static final  Path PATH = Paths.get(ARQUIVO);
    private static final  Path PATH__TEMP = Paths.get(ARQUIVO_TEMP);
