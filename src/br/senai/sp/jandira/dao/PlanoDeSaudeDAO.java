@@ -109,9 +109,10 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
 
             // Abrir o arquivo temporário para escrita
             BufferedWriter bwTemp = Files.newBufferedWriter(
-                    PATH__TEMP;
+                    PATH__TEMP, 
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
+                    
 
             //Iterar na lista para adicionar os planos no arquivo temporário
             for (PlanoDeSaude p : planos) {
@@ -190,7 +191,8 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
             //planos.add(p4);
     
     //--------------------------------------------------------------------------
-    public static DefaultTableModel getTableModel() {
+
+}    public static DefaultTableModel getTableModel() {
 
         // Matriz que receberá os planos de saúde
         // que serão utilizados na Tabela (JTable)
