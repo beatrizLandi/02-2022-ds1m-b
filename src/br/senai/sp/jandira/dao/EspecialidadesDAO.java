@@ -23,7 +23,8 @@ public class EspecialidadesDAO {
     private Especialidade especialidade;
     //listas
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
-    private static final String ARQUIVO = "C:\\Users\\22282076\\java\\especialidades";
+    private static final String ARQUIVO = "C:\\clinicaApp\\especialidades.txt";
+    private static  final String ARQUIVO_TEMP = "C:\\clinicaApp\\especialidadesTEMP.txt";
     private static final  Path PATH = Paths.get(ARQUIVO);
    
             
@@ -37,15 +38,14 @@ public class EspecialidadesDAO {
         especialidades.add(especialidade);
         //gravar a especialidades2s2
          try {
-            // gravar planos de saude em arquivo txt
-            BufferedWriter bw = Files.newBufferedWriter(
-                    PATH,
-                    StandardOpenOption.APPEND,
-                    StandardOpenOption.WRITE);
-            
-            bw.write(especialidade.getEspecialidadeSeparado());
-            bw.newLine();
-            bw.close();
+            try ( // gravar planos de saude em arquivo txt
+                    BufferedWriter bw = Files.newBufferedWriter(
+                            PATH,
+                            StandardOpenOption.APPEND,
+                            StandardOpenOption.WRITE)) {
+                bw.write(especialidade.getEspecialidadeSeparado());
+                bw.newLine();
+            }
             
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(
