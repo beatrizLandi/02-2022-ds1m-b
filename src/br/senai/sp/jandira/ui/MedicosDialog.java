@@ -3,18 +3,36 @@ package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.MedicoDAO;
 import br.senai.sp.jandira.model.Medico;
+import br.senai.sp.jandira.model.TipoOperacao;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 
 public class MedicosDialog extends javax.swing.JDialog {
 
-    public MedicosDialog(java.awt.Frame parent, boolean modal) {
+    private TipoOperacao tipoOperacao;
+    private Medico medico;
+    
+    //----------------------------------------------------------------------------        
+    public MedicosDialog(
+            java.awt.Frame parent,
+            boolean modal,
+            TipoOperacao tipoOperacao,
+            Medico medico) {
+        
         super(parent, modal);
         initComponents();
-    }
-
+        this.tipoOperacao = tipoOperacao; 
+        this.medico = medico;
+        
+        //prencher campos
+        if(tipoOperacao== TipoOperacao.ALTERAR){
+            preecherFormulario();
+        
+        }
+   }
     
+   //--------------------------------------------------------------------------- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -201,9 +219,9 @@ public class MedicosDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-        // Criar um objeto Plano de Saúde
+
 //------------------------------------------------------------------------------        
-        //AAAAAAAAAAAAAAAAAAAAAAAAAAFAZER
+       
 
         Medico medico = new Medico();
         
@@ -211,6 +229,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         medico.setEmail(textEmail.getText());
         medico.setNome(textNomeDoMedico.getText());
         medico.setTelefone(textTelefone.getText());
+        medico.setDataNascimento(LocalDate.ofYearDay();
         
         
         

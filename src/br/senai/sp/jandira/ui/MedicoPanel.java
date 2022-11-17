@@ -170,4 +170,6 @@ public class MedicoPanel extends javax.swing.JPanel {
         tableMedico.setDefaultEditor(Object.class, null);
 
 
+ }
+
 }
