@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
@@ -141,7 +138,7 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         buttonSalvar.setBounds(460, 260, 80, 60);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(10, 60, 560, 340);
+        jPanel2.setBounds(10, 100, 560, 340);
 
         setBounds(0, 0, 602, 459);
     }// </editor-fold>//GEN-END:initComponents
