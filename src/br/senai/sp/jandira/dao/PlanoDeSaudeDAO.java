@@ -11,9 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,10 +18,10 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
 
     private PlanoDeSaude planoDeSaude;
     private static ArrayList<PlanoDeSaude> planos = new ArrayList<>();
-    private static  final String ARQUIVO = "C:\\clinicaApp\\planoSaude.txt";
-    private static  final String ARQUIVO_TEMP = "C:\\clinicaApp\\planoSaudeTEMP.txt";
+    private static  final String ARQUIVO = "C:\\Users\\22282076\\java\\planoDeSaude.txt";
+    private static  final String ARQUIVO__TEMP = "C:\\Users\\22282076\\java\\planoDeSaude.txt";
     private static final  Path PATH = Paths.get(ARQUIVO);
-   private static final  Path PATH__TEMP = Paths.get(ARQUIVO_TEMP);
+   private static final  Path PATH__TEMP = Paths.get(ARQUIVO__TEMP);
     
 //------------------------------------------------------------------------------
     public PlanoDeSaudeDAO(PlanoDeSaude planoDeSaude) {
@@ -40,19 +37,17 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
   
       planos.add(planoDeSaude);
       
-      try {
-          //gravar em texto
+      
+          try ( //gravar em texto
+                  BufferedWriter bw = Files.newBufferedWriter(
+                          PATH,
+                          StandardOpenOption.APPEND,
+                          StandardOpenOption.WRITE)) {
+              bw.write(planoDeSaude.getPlanoDeSaudeSeparado());
+              bw.newLine();
+          }
           
-          BufferedWriter bw = Files.newBufferedWriter(
-                                        PATH, 
-                                        StandardOpenOption.APPEND,
-                                        StandardOpenOption.WRITE);
-          
-          bw.write(planoDeSaude.getPlanoDeSaudeSeparado());
-          bw.newLine();
-          bw.close();
-          
-      } catch (IOException ex) {
+       catch (IOException ex) {
           JOptionPane.showMessageDialog(
                             null,
                                     "ocorreu um erro ao gravar o plano de saude :( entre em contato com o suporte",
@@ -78,27 +73,25 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
         
         //atençao isso e importante 
         File arquivoAatual = new File(ARQUIVO);
-        File arquivoTemp = new File(ARQUIVO_TEMP);
+        File arquivoTemp = new File(ARQUIVO__TEMP);
         
         try {
             // arquivo temporareo
             arquivoTemp.canWrite();
             
-            //abrir S2S2S2
-            
-            BufferedWriter bwTemp = Files.newBufferedWriter(
-                                                            PATH__TEMP, 
-                                                             StandardOpenOption.APPEND,
-                                                             StandardOpenOption.WRITE);
-            
-            //inateirar lista 
-        for( PlanoDeSaude p :planos){
-        bwTemp.write(p.getPlanoDeSaudeSeparado());
-        bwTemp.newLine();
-        
-        }
-        //frchar arq
-        bwTemp.close();
+            //inateirar lista
+            try ( //abrir S2S2S2
+                    BufferedWriter bwTemp = Files.newBufferedWriter(
+                            PATH__TEMP,
+                            StandardOpenOption.APPEND,
+                            StandardOpenOption.WRITE)) {
+                //inateirar lista
+                for (PlanoDeSaude p : planos) {
+                    bwTemp.write(p.getPlanoDeSaudeSeparado());
+                    bwTemp.newLine();
+                }
+                //frchar arq
+            }
         
         //aaaaaa
         arquivoAatual.delete();
@@ -150,27 +143,31 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
   //--------------------------------------------------------------------------
       public static void getListaPlanosDeSaude() {
 
+
         //Abrir o arquivo para leitura
-        try {
-            BufferedReader br = Files.newBufferedReader(PATH);
-            String linha = " ";
-
-            linha = br.readLine();
-
-            while (linha != null && !linha.isEmpty()) {
-                String[] linhaVetor = linha.split(";");
-                System.out.println(linhaVetor[0]);
-                PlanoDeSaude novoPlanoDeSaude = new PlanoDeSaude(
-                        Integer.valueOf(linhaVetor[0]), linhaVetor[1], linhaVetor[2]);
-
-                planos.add(novoPlanoDeSaude);
+        
+            try (BufferedReader br = Files.newBufferedReader(PATH)) {
+                String linha = "";
+                
                 linha = br.readLine();
+                
+                while (linha != null && !linha.isEmpty()) {
+                    String[] linhaVetor = linha.split(";");
+                    System.out.println(linhaVetor[0]);
+                    PlanoDeSaude novoPlanoDeSaude = new PlanoDeSaude(
+                            Integer.valueOf(linhaVetor[0]), linhaVetor[1], linhaVetor[2]);
+                    
+                    planos.add(novoPlanoDeSaude);
+                    linha = br.readLine();
+                }
             }
 
-            br.close();
-
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro.", "Erro na leitura :(", JOptionPane.ERROR_MESSAGE);
+         catch (IOException ex) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Oh não, Ocorreu um erro. (|||❛︵❛ )", 
+                    "Erro na leitura.", 
+                    JOptionPane.ERROR_MESSAGE);
         }
 
 //        PlanoDeSaude p1 = new PlanoDeSaude("Unimed", "Bronze");

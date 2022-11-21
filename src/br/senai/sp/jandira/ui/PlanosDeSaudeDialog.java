@@ -86,6 +86,11 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
 
         text_Codigo.setEditable(false);
         text_Codigo.setBackground(new java.awt.Color(204, 204, 204));
+        text_Codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_CodigoActionPerformed(evt);
+            }
+        });
         jPanel2.add(text_Codigo);
         text_Codigo.setBounds(30, 70, 71, 30);
 
@@ -96,6 +101,11 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         jLabel3.setBounds(30, 110, 230, 16);
 
         textNomeDaOperadora.setBackground(new java.awt.Color(204, 204, 204));
+        textNomeDaOperadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textNomeDaOperadoraActionPerformed(evt);
+            }
+        });
         jPanel2.add(textNomeDaOperadora);
         textNomeDaOperadora.setBounds(30, 130, 500, 30);
 
@@ -172,6 +182,14 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCancelarActionPerformed
+
+    private void text_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_CodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_CodigoActionPerformed
+
+    private void textNomeDaOperadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNomeDaOperadoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textNomeDaOperadoraActionPerformed
 
     private boolean validarCadastro() {
         

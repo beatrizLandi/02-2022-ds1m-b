@@ -2,7 +2,9 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.MedicoDAO;
+import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.TipoOperacao;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 
@@ -97,9 +99,9 @@ public class MedicoPanel extends javax.swing.JPanel {
                             TipoOperacao.ADICIONAR,
                              null);
 
-        planosDeSaudeDialog.setVisible(true);
+        medicosDialog.setVisible(true);
 
-        criarTabelaPlanosDeSaude();
+        criarTabelaMedico();
         
         //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
@@ -140,8 +142,52 @@ public class MedicoPanel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_buttonExcluirMedicoActionPerformed
+  private void excluir(){
+        
+        int resposta = JOptionPane.showConfirmDialog(
+                this,
+                "Voce,confirma a exclusao do medico selecionado?", 
+                "Medico", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE);
+        
+        if (resposta ==0){
+            String codigoStr = tableMedico.getValueAt(linha, 0).toString();
+            Integer codigo = Integer.valueOf(codigoStr);
+            MedicoDAO.excluir(codigo);
+            criarTabelaMedico();
+        }
+        
+    
+    }
 
+   //----------------------------------------------------------------------------- 
+    private Integer getCodigo() {
+        String codigoStr = tableMedico.getValueAt(linha, 0).toString();
+        return Integer.valueOf(codigoStr);
+    }
 
+    
+    private Integer retornarCodigoSelecionado(){
+     return null;
+    }
+    //--------------------------------------------------------------------------
+    
+     private void editar() {
+        
+        Medico medico = MedicoDAO.getMedico(getCodigo());
+        
+        MedicosDialog medicosDialog = 
+                new MedicosDialog(
+                        null, 
+                        true, 
+                        TipoOperacao.ALTERAR, 
+                        medico);
+        
+        medicosDialog.setVisible(true);
+        
+        criarTabelaMedico();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionarMedico;
     private javax.swing.JButton buttonAlterarMedico;
