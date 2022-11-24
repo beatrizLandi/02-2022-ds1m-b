@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
@@ -42,7 +39,7 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel3.setText("❤Planos de saúde❤");
+        jLabel3.setText("♡❤Planos de saúde❤♡");
         add(jLabel3);
         jLabel3.setBounds(20, 10, 230, 20);
 
@@ -162,7 +159,7 @@ public class PlanosDeSaudePanel extends javax.swing.JPanel {
         
         criarTabelaPlanosDeSaude();
     }
-    //-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
     private void excluir(){
         
         int resposta = JOptionPane.showConfirmDialog(

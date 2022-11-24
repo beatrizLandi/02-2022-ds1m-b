@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadesDAO;
+import br.senai.sp.jandira.dao.MedicoDAO;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 
 public class HomeFrame extends javax.swing.JFrame {
@@ -11,7 +12,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private final int POSICAO_Y = 180;
     private final int LARGURA = 945;
     private final int ALTURA = 370;
-    //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    //---------------------------------------------------------------------------
     
     private EspecialidadesPanel especialidadesPanel;
     
@@ -20,15 +21,25 @@ public class HomeFrame extends javax.swing.JFrame {
     private final int LARGURAespecialidade = 945;
     private final int ALTURAespecialidade = 370;
     
+    //---------------------------------------------------------------------------
+     private MedicoPanel medicoPanel;
+    
+    private final int POSICAO_O = 10;
+    private final int POSICAO_P = 180;
+    private final int LARGURAmedico = 945;
+    private final int ALTURAmedico = 370;
+    
+    //-------------------------------------------------------------------------
     public HomeFrame() {
         
         initComponents();
         PlanoDeSaudeDAO.getListaPlanosDeSaude();
         EspecialidadesDAO.getEspecialidadesTeste();
+        MedicoDAO.getListaMedicos();
         initPanels();
         
     }
-
+//-----------------------------------------------------------------------------------
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -129,6 +140,11 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonMedicos.setForeground(new java.awt.Color(51, 0, 255));
         buttonMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/6954593_dracula_frightening_halloween_spooky_terror_icon (2).png"))); // NOI18N
         buttonMedicos.setToolTipText("Médicos");
+        buttonMedicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMedicosActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonMedicos);
         buttonMedicos.setBounds(280, 100, 80, 60);
 
@@ -225,6 +241,14 @@ public class HomeFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_buttonSairActionPerformed
 
+    private void buttonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicosActionPerformed
+        buttonPlanosDeSaude.setBackground(new java.awt.Color(246, 246, 246));
+        buttonMedicos.setBackground(new java.awt.Color(153, 0, 153));
+        buttonHome.setBackground(new java.awt.Color(246, 246, 246));
+        panelHome.setVisible(false);
+       medicoPanel.setVisible(true);
+    }//GEN-LAST:event_buttonMedicosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAgenda;
     private javax.swing.JButton buttonEspecialidades;
@@ -256,6 +280,7 @@ public class HomeFrame extends javax.swing.JFrame {
         
         getContentPane().add(planosDeSaudePanel);
         planosDeSaudePanel.setVisible(false);
+//----------------------------------------------------------------------
         
         especialidadesPanel = new EspecialidadesPanel();
         
@@ -266,7 +291,20 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(especialidadesPanel);
         especialidadesPanel.setVisible(false);
         
-
+//---------------------------------------------------------------------------------
+    
+     medicoPanel = new MedicoPanel();
+        
+        medicoPanel.setBounds(
+                POSICAO_O, POSICAO_P,
+                LARGURAmedico, ALTURAmedico);
+        
+        getContentPane().add(medicoPanel);
+        medicoPanel.setVisible(false);
+        
+    //------------------------------------------------------------------------------
     }
+    
+    
 
 }

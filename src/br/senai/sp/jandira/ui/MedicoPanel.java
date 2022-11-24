@@ -35,7 +35,7 @@ public class MedicoPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel3.setText("❤Planos de saúde❤");
+        jLabel3.setText("♡❤Medicos❤♡");
         add(jLabel3);
         jLabel3.setBounds(20, 10, 230, 20);
 
@@ -116,8 +116,8 @@ public class MedicoPanel extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(
                 this,
-                "Por favor, selecione o plano de saúde que você deseja alterar!",
-                "Plano De Saúde",
+                "Por favor, selecione medico que você deseja alterar!",
+                "Equipe medica",
                 JOptionPane.WARNING_MESSAGE);
 
         }
@@ -136,8 +136,8 @@ public class MedicoPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(
                 this,
-                "Por favor, selecione o plano que você deseja excluir!",
-                "Plano de Saúde",
+                "Por favor, selecione o medico deseja excluir!",
+                "Equipe medica",
                 JOptionPane.ERROR_MESSAGE);
         }
 
@@ -218,4 +218,5 @@ public class MedicoPanel extends javax.swing.JPanel {
 
  }
 
+ 
 }

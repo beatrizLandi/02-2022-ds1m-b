@@ -19,7 +19,7 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
     private PlanoDeSaude planoDeSaude;
     private static ArrayList<PlanoDeSaude> planos = new ArrayList<>();
     private static  final String ARQUIVO = "C:\\Users\\22282076\\java\\planoDeSaude.txt";
-    private static  final String ARQUIVO__TEMP = "C:\\Users\\22282076\\java\\planoDeSaude.txt";
+    private static  final String ARQUIVO__TEMP = "C:\\Users\\22282076\\java\\planoDeSaude_temp.txt";
     private static final  Path PATH = Paths.get(ARQUIVO);
    private static final  Path PATH__TEMP = Paths.get(ARQUIVO__TEMP);
     
@@ -165,7 +165,7 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
          catch (IOException ex) {
             JOptionPane.showMessageDialog(
                     null, 
-                    "Oh não, Ocorreu um erro. (|||❛︵❛ )", 
+                    "Oh não, Ocorreu um erro. (|| ❛︵❛ )", 
                     "Erro na leitura.", 
                     JOptionPane.ERROR_MESSAGE);
         }

@@ -30,7 +30,6 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         
         }
    }
-    
    //--------------------------------------------------------------------------- 
     private void preencherFormulario(){
         
