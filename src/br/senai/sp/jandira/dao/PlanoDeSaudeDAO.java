@@ -18,7 +18,7 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
 
     private PlanoDeSaude planoDeSaude;
     private static ArrayList<PlanoDeSaude> planos = new ArrayList<>();
-    private static  final String ARQUIVO = "C:\\Users\\22282076\\java\\planoDeSaude.txt";
+    private static  final String ARQUIVO = "C:\\Users\\22282076\\clinicaBancoDados\\planoDeSaude.txt";
     private static  final String ARQUIVO__TEMP = "C:\\Users\\22282076\\java\\planoDeSaude_temp.txt";
     private static final  Path PATH = Paths.get(ARQUIVO);
    private static final  Path PATH__TEMP = Paths.get(ARQUIVO__TEMP);
@@ -75,38 +75,36 @@ public class PlanoDeSaudeDAO { // Simular nosso banco de dados
         File arquivoAatual = new File(ARQUIVO);
         File arquivoTemp = new File(ARQUIVO__TEMP);
         
-        try {
-            // arquivo temporareo
-            arquivoTemp.canWrite();
+       try {
+      
+                 arquivoTemp.createNewFile();
+       
+                     BufferedWriter bwTemp = Files.newBufferedWriter(
+                      PATH__TEMP, 
+                      StandardOpenOption.APPEND,
+                      StandardOpenOption.WRITE);
             
-            //inateirar lista
-            try ( //abrir S2S2S2
-                    BufferedWriter bwTemp = Files.newBufferedWriter(
-                            PATH__TEMP,
-                            StandardOpenOption.APPEND,
-                            StandardOpenOption.WRITE)) {
-                //inateirar lista
-                for (PlanoDeSaude p : planos) {
-                    bwTemp.write(p.getPlanoDeSaudeSeparado());
-                    bwTemp.newLine();
+                    for(PlanoDeSaude p : planos){
+                     bwTemp.write(p.getPlanoDeSaudeSeparado());
+                     bwTemp.newLine();
+            
                 }
-                //frchar arq
-            }
-        
-        //aaaaaa
-        arquivoAatual.delete();
-        
-        //renomeamento?
-        
-        arquivoTemp.renameTo(arquivoAatual);
-        
-        } catch (IOException ex) {
+                     bwTemp.close();
+                 
+                    arquivoAatual.delete();
+                
+                    arquivoTemp.renameTo(arquivoAatual);
             
-            JOptionPane.showMessageDialog(null,
-                                            "erro ao gerar arquivo(｡•́︿•̀｡)",
-                                            "ERRO",
-                                            JOptionPane.ERROR_MESSAGE);
-           }
+            }catch (IOException ex){
+            
+                JOptionPane.showMessageDialog(
+                                    null, 
+                                        "ocorreu um erro ao gerar arquivo do plano de saude", 
+                                        "erro", 
+                                        JOptionPane.ERROR_MESSAGE);
+            
+            }   
+           
     
     }
   //----------------------------------------------------------------------------

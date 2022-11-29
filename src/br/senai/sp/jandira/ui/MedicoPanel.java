@@ -62,13 +62,14 @@ public class MedicoPanel extends javax.swing.JPanel {
         tableMedico.setBackground(new java.awt.Color(204, 204, 204));
         tableMedico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
         scrollTableMedico.setViewportView(tableMedico);
@@ -206,9 +207,11 @@ public class MedicoPanel extends javax.swing.JPanel {
 
         // Definir a largura de cada coluna
         tableMedico.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tableMedico.getColumnModel().getColumn(1).setPreferredWidth(300);
-        tableMedico.getColumnModel().getColumn(2).setPreferredWidth(300);
-
+        tableMedico.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tableMedico.getColumnModel().getColumn(2).setPreferredWidth(220);
+        tableMedico.getColumnModel().getColumn(3).setPreferredWidth(220);
+        tableMedico.getColumnModel().getColumn(4).setPreferredWidth(130);
+         
         // Impedir/bloquear a movimentação das colunas
         tableMedico.getTableHeader().setReorderingAllowed(false);
 

@@ -19,7 +19,7 @@ public class MedicoDAO {
     
     private Medico medico;
     private static ArrayList<Medico> medicos = new ArrayList<>();
-    private static final String ARQUIVO = "C:\\Users\\22282078\\projeto-java\\medico.txt";
+    private static final String ARQUIVO = "C:\\Users\\22282076\\medicoBancodados\\medicoBancoDados.txt";
     private static final String ARQUIVO_TEMP = "C:\\Users\\22282078\\projeto-java\\medico-temp.txt";
     private static final Path PATH = Paths.get(ARQUIVO);
     private static final Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
@@ -102,7 +102,7 @@ public class MedicoDAO {
          arquivoTemp.renameTo(arquivoAtual);
         
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gerar o arquivo!",
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao gerar o arquivo  (；￣Д￣)",
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
         }
@@ -155,7 +155,9 @@ public class MedicoDAO {
             br.close();
 
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro.", "Erro na leitura", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro.", 
+                    "Erro na leitura arquivo de lista  medio", 
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -164,7 +166,7 @@ public class MedicoDAO {
 
         //Matrix que receberá os planos de saúde 
         // que serão utilizados na tabela
-        Object[][] dados = new Object[medicos.size()][3];
+        Object[][] dados = new Object[medicos.size()][5];
 
         //For each para extrair cada objeto plano de saúde do
         // arrraylist especialidades  e separar cada plano na matriz de dados 
@@ -173,11 +175,13 @@ public class MedicoDAO {
             dados[i][0] = p.getCodigo();
             dados[i][1] = p.getCrm();
             dados[i][2] = p.getNome();
+            dados[i][3] = p.getEmail();
+            dados[i][4] = p.getTelefone();
             
             i++;
         }
         // Definir um vetor com os nomes das colunas da tabelas
-        String[] titulos = {"Código", "CRM", "Nome"};
+        String[] titulos = {"Código", "CRM", "Nome","Email","Telefone",};
 
         //Criar um modelo que será utilizado pela JTable 
         //para exibir os dados dos planos 
@@ -186,29 +190,6 @@ public class MedicoDAO {
 
     }
   //------------------------------------------------------------------------------  
-    public static DefaultTableModel getTableModelEspecialidades() {
 
-        //Matrix que receberá os planos de saúde 
-        // que serão utilizados na tabela
-        Object[][] dados = new Object[medicos.size()][2];
-
-        //For each para extrair cada objeto plano de saúde do
-        // arrraylist especialidades  e separar cada plano na matriz de dados 
-        int i = 0;
-        for (Medico p : medicos) {
-            dados[i][0] = p.getCodigo();
-            dados[i][1] = p.getNome();
-            
-            i++;
-        }
-        // Definir um vetor com os nomes das colunas da tabelas
-        String[] titulos = {"Código", "Especialidade"};
-
-        //Criar um modelo que será utilizado pela JTable 
-        //para exibir os dados dos planos 
-        DefaultTableModel tableModel = new DefaultTableModel(dados, titulos);
-        return tableModel;
-
-    }
  //------------------------------------------------------------------------------   
 }
