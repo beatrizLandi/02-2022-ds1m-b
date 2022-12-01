@@ -19,7 +19,7 @@ public class MedicoDAO {
     
     private Medico medico;
     private static ArrayList<Medico> medicos = new ArrayList<>();
-    private static final String ARQUIVO = "C:\\Users\\22282076\\medicoBancodados\\medicoBancoDados.txt";
+    private static final String ARQUIVO = "C:\\Users\\22282076\\bancoDadosMedico\\bancoDadosMedico.txt";
     private static final String ARQUIVO_TEMP = "C:\\Users\\22282078\\projeto-java\\medico-temp.txt";
     private static final Path PATH = Paths.get(ARQUIVO);
     private static final Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);

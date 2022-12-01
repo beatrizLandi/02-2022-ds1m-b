@@ -31,12 +31,13 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         }
    }
    //--------------------------------------------------------------------------- 
-    private void preencherFormulario(){
+    private void preecherFormulario() {
         
-        
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png")));
         text_Codigo.setText(planoDeSaude.getCodigo().toString());
         textNomeDaOperadora.setText(planoDeSaude.getOperadora());
         textTipoDoPlano.setText(planoDeSaude.getTipoDoPlano());
+    
     }
     
     @SuppressWarnings("unchecked")
@@ -241,8 +242,5 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
     private javax.swing.JTextField text_Codigo;
     // End of variables declaration//GEN-END:variables
 
-    private void preecherFormulario() {
-        
-    
-    }
+   
 }

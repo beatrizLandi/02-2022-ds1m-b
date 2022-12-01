@@ -33,6 +33,18 @@ public class MedicosDialog extends javax.swing.JDialog {
    }
     
    //--------------------------------------------------------------------------- 
+    private void preecherFormulario() {
+     
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png")));
+        text_Codigo.setText(medico.getCodigo().toString());
+        textCRM.setText(medico.getCrm());
+        textNomeDoMedico.setText(medico.getNome());
+        textEmail.setText(medico.getEmail());
+        textTelefone.setText(medico.getTelefone());
+    }
+    
+    
+    //--------------------------------------------------------------------------
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -78,7 +90,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         jLabel1.setBounds(10, 10, 530, 30);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 810, 50);
+        jPanel1.setBounds(0, 0, 780, 50);
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalhes da(o) médica(o):", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(51, 0, 0))); // NOI18N
@@ -118,6 +130,9 @@ public class MedicosDialog extends javax.swing.JDialog {
         buttonSalvar.setBackground(new java.awt.Color(204, 204, 204));
         buttonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/save32.png"))); // NOI18N
         buttonSalvar.setToolTipText("Salvar Cadastro");
+        buttonSalvar.setMaximumSize(new java.awt.Dimension(250, 500));
+        buttonSalvar.setMinimumSize(new java.awt.Dimension(250, 500));
+        buttonSalvar.setPreferredSize(new java.awt.Dimension(250, 500));
         buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSalvarActionPerformed(evt);
@@ -264,10 +279,6 @@ public class MedicosDialog extends javax.swing.JDialog {
         medico.setEmail(textEmail.getText());
         medico.setNome(textNomeDoMedico.getText());
         medico.setTelefone(textTelefone.getText());
-       
-        
-        
-        
         
         if (validarCadastroMedico()){
            MedicoDAO.gravar(medico);
@@ -425,13 +436,5 @@ public class MedicosDialog extends javax.swing.JDialog {
     private javax.swing.JTextField text_Codigo;
     // End of variables declaration//GEN-END:variables
 
-    private void preecherFormulario() {
-      textEmail.setText(medico.getEmail());
-      textCRM.setText(medico.getCrm());
-      textNomeDoMedico.setText(medico.getNome());
-      textTelefone.setText(medico.getTelefone());
-      textEmail.setText(medico.getEmail());
-      
-      
-    }
+    
 }

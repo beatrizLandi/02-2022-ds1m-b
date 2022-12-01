@@ -23,7 +23,7 @@ public class EspecialidadesDAO {
     private Especialidade especialidade;
     //listas
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
-    private static final String ARQUIVO = "C:\\clinicaApp\\especialidades.txt";
+    private static final String ARQUIVO = "C:\\Users\\22282076\\bancoDadosEspecialidade\\bancoDadosEspecialidade.txt";
     private static  final String ARQUIVO_TEMP = "C:\\clinicaApp\\especialidadesTEMP.txt";
     private static final  Path PATH = Paths.get(ARQUIVO);
    
